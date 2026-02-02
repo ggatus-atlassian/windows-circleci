@@ -1,15 +1,13 @@
 version: 2.1
+
 orbs:
-  python: circleci/python@3.0.0
+  win: circleci/windows@5.0 # The Windows orb gives you everything you need to start using the Windows executor.
+
 jobs:
-  build_and_test: # this can be any name you choose
-    executor: python/default # use the default executor defined within the orb
+  build: # name of your job
+    executor: win/default # executor type
+
     steps:
-      - checkout # checkout source code
-      - run:
-          name: Hello world
-          command: echo "hello world"
-workflows:
-  build_test_deploy:
-    jobs:
-      - build_and_test
+      # Commands are run in a Windows virtual machine environment
+      - checkout
+      - run: Write-Host 'Hello, Windows'
