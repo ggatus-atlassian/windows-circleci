@@ -13,3 +13,19 @@ jobs:
       # Commands are run in a Windows virtual machine environment
       - checkout
       - run: Write-Host 'Hello, Windows'
+      - run: echo "Starting"
+      - run: dir
+      - run: echo "Completed"
+      - run: whoami
+      - run: get-volume
+      - run: |
+          $Env:Path
+      - run: |
+          [System.Environment]::GetEnvironmentVariable("Path","Machine")
+      - run: |
+          [System.Environment]::GetEnvironmentVariable("Path","User")
+      - run: |
+          [System.Environment ]::GetEnvironmentVariable("Path","Process")
+      - run: docker system info
+      # Check if fast boot is enabled.
+      - run: powercfg -a
