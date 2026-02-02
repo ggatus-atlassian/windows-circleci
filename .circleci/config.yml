@@ -29,3 +29,12 @@ jobs:
       - run: docker system info
       # Check if fast boot is enabled.
       - run: powercfg -a
+
+workflows:
+  version: 2
+  # The 'build-workflow' has no triggers key, so it runs on every git push by default
+  build-workflow:
+    jobs:
+      - build
+      - build
+      - build
